@@ -5,7 +5,6 @@ class AppsForm(forms.ModelForm):
     
     class Meta:
         model = AppModel
-
         fields = [
             "title",
             "desc",
