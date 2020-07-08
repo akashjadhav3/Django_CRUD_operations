@@ -14,6 +14,15 @@ def create_view(request):
 
 def list_view(request):
     context = {}
-    context["dataset"]=AppModel.objects.all()
+    context["dataset"]=AppModel.objects.all()   
 
     return render(request,'list_view.html',context)
+
+def detail_view(request,id):
+    context = {}
+
+    context["data"]= AppModel.objects.get(id=id)
+
+    return render(request,'detail_view.html',context)
+
+
