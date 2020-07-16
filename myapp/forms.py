@@ -9,3 +9,10 @@ class AppsForm(forms.ModelForm):
             "title",
             "desc",
         ]
+
+    def cleaned_title(self, *args, **kwargs):
+        title = self.cleaned_data.get["title"]
+        qs = AppModel.objects.filter(title)
+        if qs.exists():
+            raise forms.ValidationError("This title is already in use")
+        return title
