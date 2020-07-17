@@ -1,5 +1,5 @@
 Python Shell using ForeignKey
-
+    1)
         >>> from django.contrib.auth import get_user_model
 
         >>> User = get_user_model()
@@ -9,5 +9,12 @@ Python Shell using ForeignKey
         >>> j
         <User: akash>
         >>> j.appmodel_set.all()
+        <QuerySet [<AppModel: title2 update>, <AppModel: title3 updat>, <AppModel: title4>, <AppModel: t5>, <AppModel: t6>, <AppModel: akash>, <AppModel: akash>, <AppModel: akash>]>
+        >>> 
+
+    2)
+        >>> from myapp.models import AppModel
+        >>> qs = AppModel.objects.filter(user__id=j.id)
+        >>> qs
         <QuerySet [<AppModel: title2 update>, <AppModel: title3 updat>, <AppModel: title4>, <AppModel: t5>, <AppModel: t6>, <AppModel: akash>, <AppModel: akash>, <AppModel: akash>]>
         >>> 

@@ -5,14 +5,16 @@ from .models import AppModel
 from .forms import AppsForm
 
 
-@login_required   # two way to do this
-# @staff_member_required
+# @login_required   # two way to do this
+@staff_member_required
 def create_view(request):
     context = {}
     form = AppsForm(request.POST or None)
     if form.is_valid():
+        obj = form.save(commit=False)
+        obj.user = request.user
         # obj = AppModel.objects.create(**form.cleaned_data) # also used to create when form.Form in form.py
-        form.save()
+        obj.save()
     context['form']= form
     return render(request,"create_view.html", context)
 
