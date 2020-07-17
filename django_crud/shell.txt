@@ -1,0 +1,13 @@
+Python Shell using ForeignKey
+
+        >>> from django.contrib.auth import get_user_model
+
+        >>> User = get_user_model()
+        >>> User
+        <class 'django.contrib.auth.models.User'>
+        >>> j = User.objects.first()
+        >>> j
+        <User: akash>
+        >>> j.appmodel_set.all()
+        <QuerySet [<AppModel: title2 update>, <AppModel: title3 updat>, <AppModel: title4>, <AppModel: t5>, <AppModel: t6>, <AppModel: akash>, <AppModel: akash>, <AppModel: akash>]>
+        >>> 
