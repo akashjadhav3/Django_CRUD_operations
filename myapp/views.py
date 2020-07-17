@@ -1,7 +1,12 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import (get_object_or_404,render,HttpResponseRedirect)
 from .models import AppModel
 from .forms import AppsForm
 
+
+@login_required   # two way to do this
+# @staff_member_required
 def create_view(request):
     context = {}
     form = AppsForm(request.POST or None)
