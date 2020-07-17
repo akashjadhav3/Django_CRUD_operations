@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
-from django.shortcuts import (get_object_or_404,render,HttpResponseRedirect)
+from django.shortcuts import (get_object_or_404,render,HttpResponseRedirect,redirect)
 from .models import AppModel
 from .forms import AppsForm
 
@@ -45,7 +45,8 @@ def delete_view(request,id):
     obj = get_object_or_404(AppModel,id=id)
     if request.method =='POST':
         obj.delete()
-        return HttpResponseRedirect('/list')
+        # return HttpResponseRedirect('/list')
+        return redirect('/list')
     return render(request,'delete_view.html',context)
 
 
